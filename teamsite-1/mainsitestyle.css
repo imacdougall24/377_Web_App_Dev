@@ -1,0 +1,49 @@
+/* Mainsite */
+body {
+    background-image:;
+}
+.heading {
+    position:relative;
+  }
+  .heading img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .heading h1 {
+    position:absolute;
+    text-align: center;
+    left: 20%;
+    top: 20%;
+    font-size: 100px;
+    color:#fff;
+    padding:3px;
+    z-index:99;
+  }
+button {
+  height: 40px;
+  width: 20%;
+  text-align: center;
+  position: absolute;
+}
+button:hover{
+  animation-name: blowup;
+  animation-duration: 1s;
+  animation-fill-mode:;
+}
+
+
+@keyframes blowup {
+  from {height: 40px; width: 20%;}
+  to {height: 50px; width: 30%;}
+}
+
+#pb1 {
+  left: 77%;
+}
+#pb2 {
+  left: 3%;
+}
+#pb3 {
+  left: 40%;
+}
+
