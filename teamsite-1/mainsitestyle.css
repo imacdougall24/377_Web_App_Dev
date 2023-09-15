@@ -1,6 +1,6 @@
 /* Mainsite */
 body {
-    background-image:;
+    /*background-image:;*/
 }
 .heading {
     position:relative;
@@ -15,7 +15,9 @@ body {
     left: 20%;
     top: 20%;
     font-size: 100px;
-    color:#fff;
+    -webkit-text-stroke: #002fff;
+    -webkit-text-stroke-width: 5px;
+    color:#bcbf00;
     padding:3px;
     z-index:99;
   }
@@ -24,26 +26,105 @@ button {
   width: 20%;
   text-align: center;
   position: absolute;
-}
-button:hover{
-  animation-name: blowup;
-  animation-duration: 1s;
-  animation-fill-mode:;
+  border-radius: 20%;
+
 }
 
 
-@keyframes blowup {
+
+#pb1 {
+  left: 3%;
+}
+@keyframes pb1ani {
   from {height: 40px; width: 20%;}
   to {height: 50px; width: 30%;}
 }
+#pb1:hover{
+  animation-name: pb1ani;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
 
-#pb1 {
-  left: 77%;
-}
+
 #pb2 {
-  left: 3%;
-}
-#pb3 {
   left: 40%;
 }
+@keyframes pb2ani {
+  from {left: 40%; height: 40px; width: 20%;}
+  to{left: 35%; height: 50px; width: 30%;}
+}
+#pb2:hover{
+  animation-name: pb2ani;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
 
+
+#pb3 {
+  left: 77%;
+}
+@keyframes pb3ani {
+  from {left: 77%; height: 40px; width: 20%;}
+  to{left: 67%; height: 50px; width: 30%;}
+}
+#pb3:hover{
+  animation-name: pb3ani;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+/* Media Feed */
+.media {
+  background-color: #feffae;
+}
+
+.media h3 {
+  text-align: center;
+  font-size: 30px;
+  background-color: #002fff;
+  color: #bcbf00;
+  border-radius: 10px;
+  border-width: 10px;
+  border-style: double;
+  border-color: #bcbf00;
+}
+
+
+
+
+
+
+
+/* Roster */
+.roster table{
+  text-align: center;
+  width: 100%;
+  height: 90%;
+}
+.roster th {
+  border-style: solid;
+  background-color: #feff00;
+  color: #001883;
+}
+.roster td{
+  border-style: double;
+  background-color: #feffae;
+}
+
+
+
+
+/* Schedule */
+.schedule th{
+  text-align: center;
+  width: 7%;
+  border-bottom: solid;
+}
+.schedule table{
+  border-style: dashed;
+}
+.schedule td{
+  text-align: center;
+  height: 30px;
+}
