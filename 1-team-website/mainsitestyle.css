@@ -1,0 +1,169 @@
+/* Mainsite */
+body {
+    /*background-image:;*/
+}
+.heading {
+    position:relative;
+  }
+  .heading img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .heading h1 {
+    position:absolute;
+    text-align: center;
+    left: 20%;
+    top: 20%;
+    font-size: 100px;
+    -webkit-text-stroke: #002fff;
+    -webkit-text-stroke-width: 5px;
+    color:#bcbf00;
+    padding:3px;
+    z-index:99;
+  }
+button {
+  height: 40px;
+  width: 20%;
+  text-align: center;
+  position: absolute;
+  border-radius: 20%;
+
+}
+
+
+
+#pb1 {
+  left: 3%;
+}
+@keyframes pb1ani {
+  from {height: 40px; width: 20%;}
+  to {height: 50px; width: 30%;}
+}
+#pb1:hover{
+  animation-name: pb1ani;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+#pb2 {
+  left: 40%;
+}
+@keyframes pb2ani {
+  from {left: 40%; height: 40px; width: 20%;}
+  to{left: 35%; height: 50px; width: 30%;}
+}
+#pb2:hover{
+  animation-name: pb2ani;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+#pb3 {
+  left: 77%;
+}
+@keyframes pb3ani {
+  from {left: 77%; height: 40px; width: 20%;}
+  to{left: 67%; height: 50px; width: 30%;}
+}
+#pb3:hover{
+  animation-name: pb3ani;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+/* Media Feed */
+.media {
+  background-color: #feffae;
+}
+
+.media h3 {
+  text-align: center;
+  font-size: 30px;
+  background-color: #002fff;
+  color: #bcbf00;
+  border-radius: 10px;
+  border-width: 10px;
+  border-style: double;
+  border-color: #bcbf00;
+}
+
+
+
+
+
+
+
+/* Roster */
+.roster table{
+  text-align: center;
+  width: 100%;
+  height: 90%;
+}
+.roster th {
+  border-style: solid;
+  background-color: #feff00;
+  color: #001883;
+}
+.roster td{
+  border-style: double;
+  background-color: #feffae;
+}
+#coach td{
+  background-color: #a2d2dc;
+}
+
+
+
+
+/* Schedule */
+
+.schedule th{
+  text-align: center;
+  width: 7%;
+  border-bottom: solid;
+  
+}
+.schedule table{
+  border-style: dashed;
+  margin-left: 10%;
+  width: 80%;
+}
+.schedule td{
+  text-align: center;
+  height: 30px;
+}
+.schedule h1{
+  text-align: center;
+}
+.cancel {
+  background-color: red;
+  border-style: solid;
+}
+.gd{
+  background-color: rgb(0, 248, 0);
+  border-style: dashed;
+  font-weight: bold;
+}
+.listevent td{
+  border-top-style: dashed;
+  border-bottom-style: dashed;
+}
+
+
+
+/* Media Feed */
+.media img{
+  width: 80%;
+  margin-left: 10%;
+  border-style: solid;
+  border-color: #001883;
+  border-radius: 10%;
+  border-width: 5px;
+}
+.media iframe{
+  width: 80%;
+  margin-left: 10%;
+}
