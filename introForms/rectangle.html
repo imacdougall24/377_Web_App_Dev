@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function calcArea() {
+            var height = document.forms[0].elements["height"].value;
+            var width = document.forms[0].elements["width"].value;
+
+            var area = height * width;
+            document.forms[0].elements["area"].value = area;
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <form>
+        <h1>Rectangle</h1><br><br>
+        Height: <input type="number" name="height" id="height" min="1"><br>
+        Width: <input type="number" name="width" id="width" min="1"><br>
+        <input type="button" value="area" name="area" id="area" onclick="calcArea()"><br>
+        
+        Area: <input type="text" name="area" readonly="true">
+    </form>
+
+
+
+
+
+</body>
+</html>

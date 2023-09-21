@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- anything in script will run as javascript -->
+        <script>
+            function login() {
+                alert("Access Denied!");
+            }
+            function register() {
+                var name = document.forms[1].elements["username"].value;
+                    if (username == "") {
+                        alert("Username is Required");
+                    } else {
+                        alert("Success!");
+                    }
+            }
+            var terms = document.forms[1].elements["agreement"].checked;
+                if (!terms)
+
+        </script>
+    </head>
+    <body>
+        <h1>Login Form (example)</h1>
+        <form>
+            <!-- name is how we refer to a input in other parts of code (kind of like a id) -->
+            Username: <input name="username" placeholder="enter your username">
+            <!-- placeholder temporarily places a data exmple inside your input -->
+            <br>
+            Password: <input name="password" type="password" placeholder="enter your password">
+            <!-- type automatically sets itself to text if not labeled -->
+            <br>
+            <!-- value allows you to place text inside an input -->
+            <input value="login" type="button" onclick="login()">
+            <!-- onclick activates function of the same name -->
+        </form>
+<br><br><br><br>
+
+
+
+        <h1>User Registration Form (example)</h1>
+        <form>
+            First Name: <input name="fName" placeholder="enter your first name">
+            <br>
+            Last Name: <input name="lName" placeholder="enter your last name">
+            <br>
+            Username: <input id="username" placeholder="enter your username">
+            <br>
+            Password: <input name="password" type="password" placeholder="enter your password">
+            <br>
+            Phone Number: <input type="tel" name="phoneNum" placeholder="(+X)XXX-XXX-XXXX"><br>
+            Email: <input type="email" name="eMail" placeholder="yourmail@here"><br>
+            Date of birth: <input type="date" name="dateOfBirth"><br>
+            <input id="student" name="usertype" type="radio" value="student">
+                <label for="student">student</label>
+            <br>
+            <input id="staff" name="usertype" type="radio" value="staff">
+                <label for="staff">staff</label>
+            <br>
+                select your school: 
+                <select name="school">
+                    <option value="selected">Not_Selected</option>
+                    <option value="hidden">Center School</option>
+                    <option value="hidden">HMS</option>
+                    <option value="hidden">HHS</option>
+                </select>
+            <br>
+            <input id="agreement" type="checkbox" name="agreement">
+                <label for="agreement">I agree to the terms of service</label>
+                <br>
+            <input type="button" value="create account" onclick="register()">
+            
+        </form>
+
+
+    </body>
+</html>
