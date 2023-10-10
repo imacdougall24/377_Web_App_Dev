@@ -45,5 +45,5 @@ function getDeckOfCards() {
         var card = {"rank": rank, "suit": suitText};
         deck.push(card);
     }
-    
+    return deck;
 }

@@ -1,0 +1,74 @@
+/*Heading of website*/
+.heading{
+    text-align: center;
+}
+
+
+/*Buttons div*/
+.buttons input{
+    border-radius: 5px;
+    height: 30px;
+    width: 25%;
+    
+}
+
+/* Button Animations */
+
+/* PEMDAS button*/
+#pemdas{
+    position: absolute;
+    margin-left: 0%;
+}
+#pemdas:hover #pemdasdiv{
+    display: block;
+}
+
+/* pythag button*/
+#pyth{
+    position: absolute;
+    margin-left: 35%;
+}
+
+/* kinetics button*/
+#kinetics{
+    position: absolute;
+    margin-left: 73%;
+}
+
+.animate {
+    animation-duration: 0s;
+    animation-name: visible;
+    animation-iteration-count: infinite;
+  }
+
+@keyframes visible {
+    from {
+        visibility: hidden;
+    }
+    to {
+        visibility: visible;
+    }
+}
+
+
+/*Basic Math*/
+#pemdasdiv{
+    visibility:hidden
+}
+.basic{
+    width: 10%;
+}
+
+
+/*Pythagorean Theorem*/
+#pythdiv{
+    /* visibility:hidden */
+}
+
+
+/*Physics*/
+#kineticsdiv{
+    /* visibility:hidden */
+}
+
+

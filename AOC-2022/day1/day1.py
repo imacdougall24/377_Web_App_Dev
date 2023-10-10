@@ -1,18 +1,19 @@
-file = open("day1ex.txt", "r")
+file = open("day1_num.txt", "r")
 lines = file.readlines()
 
-
+max = 0
+total = 0
 for line in lines:
     line = line.strip()
-    kcal = line
-    total = 0
-    ltotal = 0
-    if line == "":
-        if total > ltotal:
-            ltotal = total
+    
+    if line == '':
+        if total > max:
+            max = total
         total = 0
-
     else:
         total += int(line)
-        
-print(str(total))
+
+if total > max:
+     max = total
+
+print(str(max))

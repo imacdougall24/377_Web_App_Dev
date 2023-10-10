@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--Linking Stylesheet and javaScript-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="scripts.js"></script>
+    
+    <title>Equation Calculator</title>
+</head>
+
+<body>
+    <!--Heading of the page-->
+    <div class="heading">
+        <h1 class="head1">Equation Calculator!</h1>
+        <h2 class="head2">Basic PEMDAS, Pythagorean Theorem, and Kinetics </h2>
+    </div>
+    <br><br><br>
+    <!--Buttons make math inputs appear-->
+    <div class="buttons">
+        <input class="pemdaslink" type="button" id="pemdas" value="Basic Math (+,-,*,/,%)" onclick="appear()">
+        <input type="button" id="pyth" value="Pythagorean Theorem" onclick="appear()">
+        <input type="button" id="kinetics" value="Kinetics" onclick="appear()">
+    </div>
+    <br><br><br>
+    <!--PEMDAS (Basic Math)-->
+    <div class="pemdaslink" id="pemdasdiv">
+        <h4 class="add">Addition</h4>
+        <input class="basic" type="number" id="add1"> + <input class="basic" type="number" id="add2"> = 
+        <div id="addanswer"></div>
+
+        <h4 class="add">Subtraction</h4>
+        <input class="basic" type="number" id="sub1"> - <input class="basic" type="number" id="sub2"> = 
+    
+
+        <h4 class="add">Multiplication</h4>
+        <input class="basic" type="number" id="mul1"> * <input class="basic" type="number" id="mul2"> = 
+
+
+        <h4 class="add">Division</h4>
+        <input class="basic" type="number" id="div1"> / <input class="basic" type="number" id="div2"> = 
+
+
+        <h4 class="add">Modulus</h4>
+        <input class="basic" type="number" id="mod1"> % <input class="basic" type="number" id="mod2"> = 
+    
+
+    </div>
+    <!--Pythagorean Theorem-->
+    <div class="equations" id="pythdiv">
+        <p>Visible</p>
+    </div>
+    <!--Kinetic Equations-->
+    <div class="equations" id="kineticsdiv">
+        
+    </div>
+
+</body>
+</html>
