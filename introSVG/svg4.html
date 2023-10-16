@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG 4</title>
+</head>
+<body>
+    <h1>SVG 4</h1>
+
+    <svg width="500" height="500" style="border: solid 1px black;">
+        
+        <!-- Creates a group -->
+        <g id="face">
+            <!-- Create face -->
+            <circle cx="100"
+                    cy="100"
+                    r="50"
+                    stroke="black"
+                    stroke-width="2"
+                    fill="yellow" />
+            
+            <!-- Eyes -->
+            <circle cx="85" cy="85" r="7" />
+            <circle cx="115" cy="85" r="7" />
+
+            <!-- Mouth -->
+            <rect x="75" y="110" width="50" height="10" />
+        </g>
+
+        <!-- The use tag allows us to paste groups -->
+        <use href="#face" transform="translate(50, 50)" fill="red" />
+        <use href="#face" transform="translate(100, 100)" fill="orange" />
+        <use href="#face" transform="translate(150, 150)" fill="yellow" />
+        <use href="#face" transform="translate(200, 200)" fill="green" />
+        <use href="#face" transform="translate(250, 250)" fill="blue" />
+        <use href="#face" transform="translate(300, 300)" fill="purple" />
+
+
+    </svg>
+
+
+
+</body>
+</html>
