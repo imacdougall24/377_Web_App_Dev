@@ -10,42 +10,33 @@
 <body>
     <h1>Example SVG Game: Craps</h1>
 
-    <svg height="300" width="300" style="background-color: green;">
+    <svg height="300" width="500" style="background-color: green;">
+        <g transform="translate(100,100)">
+            <rect height="100" width="100" class="die" id="d1" />
+            <circle class="pip" id="d1p1" cx="25" cy="25" r="5" />
+            <circle class="pip" id="d1p2" cx="25" cy="50" r="5" />
+            <circle class="pip" id="d1p3" cx="25" cy="75" r="5" />
+            <circle class="pip" id="d1p4" cx="50" cy="50" r="5" />
+            <circle class="pip" id="d1p5" cx="75" cy="25" r="5" />
+            <circle class="pip" id="d1p6" cx="75" cy="50" r="5" />
+            <circle class="pip" id="d1p7" cx="75" cy="75" r="5" />
+        </g>
 
-        <rect x="100" y="100" height="100" width="100" class="die" />
-        <circle 
-            class="pip" id="d1p1"
-            cx="125" cy="125" r="5" 
-            />
-        <circle 
-            class="pip" id="d1p2"
-            cx="125" cy="150" r="5" 
-            />
-        <circle 
-            class="pip" id="d1p3"
-            cx="125" cy="175" r="5" 
-            />
-        <circle 
-            class="pip" id="d1p4"
-            cx="150" cy="150" r="5" 
-            />
-        <circle 
-            class="pip" id="d1p5"
-            cx="175" cy="125" r="5" 
-            />
-        <circle 
-            class="pip" id="d1p6"
-            cx="175" cy="150" r="5" 
-            />
-        <circle 
-            class="pip" id="d1p7"
-            cx="175" cy="175" r="5" 
-            />
+        <g transform="translate(300,100)">
+            <rect height="100" width="100" class="die" id="d1" />
+            <circle class="pip" id="d2p1" cx="25" cy="25" r="5" />
+            <circle class="pip" id="d2p2" cx="25" cy="50" r="5" />
+            <circle class="pip" id="d2p3" cx="25" cy="75" r="5" />
+            <circle class="pip" id="d2p4" cx="50" cy="50" r="5" />
+            <circle class="pip" id="d2p5" cx="75" cy="25" r="5" />
+            <circle class="pip" id="d2p6" cx="75" cy="50" r="5" />
+            <circle class="pip" id="d2p7" cx="75" cy="75" r="5" />
+        </g>
     </svg>
 
 
     <br>
-    <input type="button" value="Roll Die" onclick="rollDie()" />
+    <input type="button" value="Roll Dice" onclick="rollDice()" />
 
 </body>
 </html>
