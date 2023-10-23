@@ -1,4 +1,4 @@
-file = open("day2sg.txt", "r")
+file = open("day2strat.txt", "r")
 lines = file.readlines()
 
 total = 0
@@ -12,14 +12,14 @@ for line in lines:
         total += 2
         myVal = "p"
     elif throw[0] == "C":
-        total += 2
+        total += 3
         myVal = "s"
 # Enemy Values
-    if throw[1] == "A":
+    if throw[1] == "X":
         enVal = "r"
-    elif throw[1] == "A":
+    elif throw[1] == "Y":
         enVal = "p"
-    elif throw[1] == "A":
+    elif throw[1] == "Z":
         enVal = "s"
 
 # Who wins
