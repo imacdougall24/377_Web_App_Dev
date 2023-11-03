@@ -1,62 +1,60 @@
-var MINIMUM_BET = 5;
-var STARTING_FUNDS = 50;
 
-var point = 0;
-var bet = 0;
-var balance = STARTING_FUNDS;
-var rolledNum = [];
+var dontRoll = [0];
+
+
+
+function checkFinish() {
+    for (var i = 2; i <= 12; i++)
+    {
+        if (!dontRoll.includes(i))
+        {
+            return false;
+        }
+    }
+    return true;
+
+}
 
 /*
  * Checks the result of the current roll and declare a win, loss, or continuation.
  */
 function checkRoll(roll) {
     var message = "";
+    if (dontRoll.includes(roll)) { // Lose
+        $("#message").text("You already rolled a " + roll + "! Better luck next time!");
+        resetBoard();
+    }
+    else // Continue
+    {
+        $("#message").text(roll + "!");
+        dontRoll.push(roll);
+        dontRoll.sort();
 
-    if (point == 0) { // New round
-        if (roll == 7 || roll == 11) {
-            endRound(true);
-        } else if (roll == 2 || roll == 3 || roll == 12) {
-            endRound(false);
-        } else {
-            $("#point").text(roll);
-            point = roll;
-        }
-    } else { // Existing round
-        if (roll == point) {
-            endRound(true);
-        } else if (roll == 7) {
-            endRound(false);
-        }
+        $("#tile" + roll).css("visibility", "visible");
+    }
+    if (checkFinish() == true) // Win
+    {
+        $("#message").text("You Win!!! Luck is in your favor!");
+        resetBoard();
     }
 }
 
-/*
- * Ends the current round of play by either adding/removing the bet to/from the balance. Also
- * resets game controls to start another round.
- *
- * win - true if the round ended in a win, false otherwise
- */
-function endRound(win) {
-    // Step 1: Update balance
-    if (win) {
-        $("#message").text("You win!");
-        balance += bet;
-    } else {
-        $("#message").text("You lose!");
-        balance -= bet;
-    }
 
-    console.log("Balance: " + balance);
 
-    // Step 2: Reset game controls for another round
-    $("#point").text("X");
-    $("#bet").val("");
-    $("#bet").prop("disabled", false);
-    $("#balance").text("$" + balance);
 
-    bet = 0;
-    point = 0;
+
+function resetBoard(){
+    
+   for (var i = 2; i <= 12; i++)
+   {
+    $("#tile" + i).css("visibility", "hidden");
+   }
+    dontRoll = [0];
+
 }
+
+
+
 
 /*
  * Rolls both dice at the same time and checks the results.
@@ -68,9 +66,7 @@ function rollDice() {
     var roll2 = rollDie("d2");
     var total = roll1 + roll2;
 
-
-    rolledNum.push(total);
-    console.log(rolledNum);
+    console.log("Total: " + total);
 
     checkRoll(total);
 }
@@ -119,27 +115,4 @@ function rollDie(dieNum) {
     }
 
     return roll;
-}
-
-/*
- * This function does two things:
- *
- * 1. Verifies that a valid bet has been entered (a valid bet must be greater than $5 but less than
- *    or equal to the total balance)
- *
- * 2. Disables the betting controls to prevent the bet from being changed mid-round
- *
- * If the bet is validated then true is returned, false otherwise.
- */
-function validateBet() {
-    bet = parseInt($("#bet").val());
-
-    console.log("Bet: " + bet);
-
-    if (isNaN(bet) || bet < MINIMUM_BET || bet > balance) {
-        return false;
-    } else {
-        $("#bet").prop("disabled", true);
-        return true;
-    }
 }

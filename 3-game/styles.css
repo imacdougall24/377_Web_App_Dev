@@ -1,0 +1,48 @@
+#background {
+    fill: #6d501d;
+}
+#border{
+    fill-opacity: 0;
+    stroke: #473518;
+    stroke-width: 20px;
+}
+
+#controls {
+    text-align: center;
+    width: 500px;
+}
+
+#message {
+    fill: #ff0000;
+    font-family: Arial, sans-serif;
+    font-size: 18pt;
+    text-anchor: middle;
+}
+
+
+
+.die {
+    fill: #ffffff;
+    stroke-width: 3;
+    stroke: #000000;
+}
+.epigraph{
+    font-weight: bold;
+}
+
+.pip {
+    stroke: #000000;
+    fill: #000000;
+    visibility: hidden;
+}
+.tilebg{
+    fill: #aa711b;
+    stroke: #000000;
+}
+.tilenum{
+    font-weight: bolder;
+    font-size: 30px;
+}
+.tiles{
+    visibility: hidden;
+}
