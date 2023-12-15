@@ -1,7 +1,6 @@
 file = open('AOC_2023\AOC-2\AOC-2-ref.txt', 'r')
 lines = file.readlines()
 
-
 def parLine(line):
     line = line.replace(':', ',').split(';')
     line = [i.strip() for i in line]
@@ -12,10 +11,6 @@ def parLine(line):
         line[x] = [i.strip() for i in line[x]]
 
     return line
-
-# -------------------------------------------------------------------------
-
-
 
 def sortColor(line):
         r = 0
@@ -33,42 +28,43 @@ def sortColor(line):
             if 'red' in i:
                 r += int(digit)
         return [r, g, b]
+    
 
-                    
-def checkValid(input, valid):
-    for k in range(len(input)):
-        validity = False
-        print(input[k], valid[k])
-        if input[k] <= valid[k]:
-            validity = True
-        else:
-            return False
-    return validity
+def sortRound(line):
+    newLine = []
+    for a in range(len(line)):
+        newLine.append(sortColor(line[a]))
+    return newLine
+
+
+
+def findValMax(line):
+    newLine = [0, 0, 0]
+    for g in range(3):
+        for h in range(len(line)):
+            if line[h][g] > newLine[g]:
+                newLine[g] = line[h][g]
+    return newLine
+
+
+def powerToTotal(line):
+    locTotal = 1
+    for c in line:
+        locTotal *= c
+    return locTotal
+
+
+    
+
+    
 
 
 
 total = 0
-round = 0
 for line in lines:
-    round += 1
-    myList = []
-    # Split lines intp color
-    lined = parLine(line)
-    # Sorts into the color
-    for m in range(len(lined)):
-        myList.append(sortColor(lined[m]))
-    print(myList)
-    
-    rgbPre = [0, 0, 0]
-    for aa in range(len(myList)):
-        for ab in range(len(myList[aa])):
-            if (myList[ab][aa] > rgbPre[aa]):
-                rgbPre[aa] = myList[ab][aa]
-    print(rgbPre)
-
-
-
-    print("---")
-
-    
-        
+    line = parLine(line)
+    line = sortRound(line)
+    line = findValMax(line)
+    print(line)
+    total += powerToTotal(line)
+    print(total, "\n----")
