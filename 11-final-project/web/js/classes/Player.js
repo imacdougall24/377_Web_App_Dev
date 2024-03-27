@@ -39,7 +39,7 @@ class Player extends Sprite{
 
         this.updateHitbox()
 
-        c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
+        // c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
         this.checkForVerticalCollisions()
     }
 
@@ -71,6 +71,7 @@ class Player extends Sprite{
         this.frameRate = this.animations[name].frameRate
         this.frameBuffer = this.animations[name].frameBuffer
         this.loop = this.animations[name].loop
+        this.currentAnimation = this.animations[name]
     }
     
     updateHitbox() {
