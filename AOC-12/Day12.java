@@ -8,37 +8,33 @@ public class Day12 {
         ArrayList<String> lines = Day12.readLines("C:\\Users\\acer\\Documents\\377_Web_App_Dev\\AOC-12\\Day12input.txt");
 
         for (String preLine : lines) {
-            String[] line = preLine.split("");
+            String[] line = preLine.split(" ");
+            String[] chart = line[0].split("");
 
-            
 
-        }
-
-    }
-
-    private int countPattern(String pattern, int[] groups) {
-
-        int location = pattern.indexOf("?");
-        // Base Case
-        if (location == -1) {
-            if(validatePattern(pattern, groups)) {
-                return 1;
+            for(String parsed : parsedLine) {
+                System.out.print(parsed);
             }
-            return 0;
+            System.out.println();
+
         }
 
-        String start = pattern.substring(0, location);
-        String end = pattern.substring(location + 1);
-
-        return countPattern(start + "#" + end, groups) + countPattern(start + "." + end, groups);
-    }
-
-    private boolean validatePattern(String pattern, int[] groups) {
-        // Calc group size
-
     }
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Line Reader
     public static ArrayList<String> readLines(String fileName) {
         ArrayList<String> lines = new ArrayList<String>();
         try {
