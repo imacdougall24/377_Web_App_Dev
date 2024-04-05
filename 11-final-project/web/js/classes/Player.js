@@ -1,6 +1,6 @@
 class Player extends Sprite{
-    constructor({collisionBlocks = [], imageSrc,}) {
-        super({imageSrc})
+    constructor({collisionBlocks = [], imageSrc, frameRate, animations, loop}) {
+        super({imageSrc, frameRate, animations, loop})
 
         this.position = {
             x:200,
@@ -25,8 +25,6 @@ class Player extends Sprite{
         this.collisionBlocks = collisionBlocks
     }
 
-    
-
 
     update() {
         // this is the blue box
@@ -40,7 +38,7 @@ class Player extends Sprite{
         this.applyGravity()
 
         this.updateHitbox()
-
+// kcdsnljvsdncksdnjcckjnsdkjcnjkcdsnjkdcsnjcdsnjcsd
         // c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
         this.checkForVerticalCollisions()
     }
@@ -50,23 +48,40 @@ class Player extends Sprite{
         if (this.preventInput) return
         this.velocity.x = 0
         if (keys.d.pressed) {
-            // this.lastDirection = 'right'
+            this.lastDirection = 'right'
+            this.switchSprite('runRight')
             this.velocity.x = this.speed.x
         }
         else if (keys.a.pressed) {
-            // this.lastDirection = 'left'
+            this.lastDirection = 'left'
+            this.switchSprite('runLeft')
             this.velocity.x = -1*this.speed.x
         }
+        else {
+            if (this.lastDirection === 'left') this.switchSprite('idleLeft')
+            else this.switchSprite('idleRight')
+        }
+    }
+
+
+    switchSprite(name) {
+        if (this.image === this.animations[name].image) return
+        this.currentFrame = 0
+        this.image = this.animations[name].image
+        this.frameRate = this.animations[name].frameRate
+        this.frameBuffer = this.animations[name].frameBuffer
+        this.loop = this.animations[name].loop
+        this.currentAnimation = this.animations[name]
     }
     
     updateHitbox() {
         this.hitbox = {
             position: {
-                x: this.position.x + 58,
-                y: this.position.y + 34,
+                x: this.position.x ,
+                y: this.position.y ,
             },
-            width: 50,
-            height: 53,
+            width: 53,
+            height: 58,
         }
     }
 

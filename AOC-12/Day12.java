@@ -10,12 +10,16 @@ public class Day12 {
         for (String preLine : lines) {
             String[] line = preLine.split(" ");
             String[] chart = line[0].split("");
-
-
-            for(String parsed : parsedLine) {
-                System.out.print(parsed);
+            
+            int[] numbers = new int[line[1].split(",").length];
+            int i = 0;
+            for(String num : line[1].split(",")) {
+                numbers[i] =  Integer.parseInt(num);
+                i++;
             }
-            System.out.println();
+            
+            checkForFreeSpaces(chart, numbers);
+            
 
         }
 
@@ -23,7 +27,33 @@ public class Day12 {
 
 
     
-    
+    public static void checkForFreeSpaces(String[] chart, int[] numbers) {
+        String[] yesChart = new String[chart.length];
+        String[] noChart = new String[chart.length];
+        int[] newNumbers = new int[numbers.length];
+
+        // Records every place a # could appear
+        for(int i = 0; i < chart.length; i++) {
+            if (chart[i].equals("#")) {
+                yesChart[i] = "#";
+            }
+        }
+        for(int i = 0; i < chart.length; i++) {
+            if (chart[i].equals(".")) {
+                noChart[i] = ".";
+            }
+        }
+
+        for(int i = 0; i < chart.length; i++) {
+            System.out.print(yesChart[i]);
+        }
+        System.out.println("");
+        for(int i = 0; i < chart.length; i++) {
+            System.out.print(noChart[i]);
+        }
+        System.out.println("");
+
+    }
     
     
     

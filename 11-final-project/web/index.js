@@ -4,27 +4,63 @@ const c = canvas.getContext('2d')
 canvas.width = 64*16 // 1024
 canvas.height = 64*9 // 576
 
-var mouse = {
-    x: undefined,
-    y: undefined,
-}
-
-maxRadius = 40;
-gravity = .1;
-friction = .5;
-
-
-var colorArray = [
-    '#127369',
-    '#10403B',
-    '#8AA6A3',
-    '#637371',
-    '#000000',
-];
-
+let parsedCollisions
+let collisionBlocks
+let background
+let doors
 const player = new Player({
-    imageSrc: '../img/player.svg',
+    imageSrc: '../img/enemy-idea/enemy.svg',
+    frameRate: 1,
+    animations: {
+        idleRight: {
+            frameRate: 7,
+            frameBuffer: 5,
+            loop: true,
+            imageSrc: '../img/enemy-idea/enemy.svg',
+        },
+        idleLeft: {
+            frameRate: 7,
+            frameBuffer: 5,
+            loop: true,
+            imageSrc: '../img/enemy-idea/enemy.svg',
+        },
+        runRight: {
+            frameRate: 7,
+            frameBuffer: 4,
+            loop: true,
+            imageSrc: '../img/enemy-idea/enemy.svg',
+        },
+        runLeft: {
+            frameRate: 7,
+            frameBuffer: 4,
+            loop: true,
+            imageSrc: '../img/enemy-idea/enemy.svg',
+        },
+        enterDoor: {
+            frameRate: 7,
+            frameBuffer: 4,
+            loop: false,
+            imageSrc: '../img/enemy-idea/enemy.svg',
+            onComplete: () => {
+                console.log('completed animation')
+                gsap.to(overlay, {
+                    opacity: 1,
+                    onComplete: () => {
+                        level++
+                        levels[level].init()
+                        player.switchSprite('idleRight')
+                        player.preventInput = false
+                        gsap.to(overlay, {
+                            opacity: 0,
+                        })
+                    }
+                })
+            },
+        },
+    }
 })
+
+
 
 let level = 1
 let levels = {
@@ -42,91 +78,141 @@ let levels = {
                     x: 0,
                     y: 0,
                 },
+                imageSrc: '../img/backgroundLevel1.png',
             })
+            doors = [
+                new Sprite ({
+                    position: {
+                        x: 762,
+                        y: 387-112,
+                    },
+                    imageSrc: '../img/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                })
+            ]
+        }
+    },
+    2: {
+        init: () => {
+            parsedCollisions = collisionsLevel2.parse2D()
+            collisionBlocks = parsedCollisions.createObjectsFrom2D()
+            player.collisionBlocks= collisionBlocks
+            player.position.x = 96
+            player.position.y = 140
+
+            if (player.currentAnimation)
+                player.currentAnimation.isActive = false
+
+            background = new Sprite({
+                position: {
+                    x: 0,
+                    y: 0,
+                },
+                imageSrc: '../img/backgroundLevel2.png',
+            })
+            doors = [
+                new Sprite ({
+                    position: {
+                        x: 772,
+                        y: 336,
+                    },
+                    imageSrc: '../img/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                })
+            ]
+        }
+    },
+    3: {
+        init: () => {
+            parsedCollisions = collisionsLevel3.parse2D()
+            collisionBlocks = parsedCollisions.createObjectsFrom2D()
+            player.collisionBlocks= collisionBlocks
+            player.position.x = 750
+            player.position.y = 267
+
+            if (player.currentAnimation)
+                player.currentAnimation.isActive = false
+
+            background = new Sprite({
+                position: {
+                    x: 0,
+                    y: 0,
+                },
+                imageSrc: '../img/backgroundLevel3.png',
+            })
+            doors = [
+                new Sprite ({
+                    position: {
+                        x: 176,
+                        y: 334,
+                    },
+                    imageSrc: '../img/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                })
+            ]
         }
     },
 }
 
 
 
-function Circle(x, y, dx, dy) {
-    this.x = x;
-    this.y = y;
-    this.dx = dx;
-    this.dy = dy;
-    this.radius = Math.random() * 3 + 1;
-    this.minRadius = this.radius;
-
-    this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
-
-    this.draw = function() {
-        c.beginPath();
-        c.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
-        c.fillStyle = this.color;
-        c.fill();
-    }
-
-    this.update = function() {
-        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-            this.x = canvas.width - this.radius;
-            this.dx = -this.dx * friction;
-        }
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-            this.dy = -this.dy * friction;
-            this.y = canvas.height - this.radius;
-        } else {
-            this.dy += gravity * this.minRadius;
-        }
-
-        
-        this.x += this.dx;
-        this.y += this.dy;
-        
-        // interactivity
-        if (mouse.x - this.x < 50 &&
-            mouse.x - this.x > -50 && 
-            mouse.y - this.y < 50 && 
-            mouse.y - this.y > -50 ) {
-            if (this.radius < maxRadius) {
-                this.radius += 1;
-            } 
-        } 
-        else if (this.radius > this.minRadius) {
-            this.radius -= 1;
-        }
-
-        this.draw();
-    }
+const keys = {
+    w: {
+        pressed: false,
+    },
+    a: {
+        pressed: false,
+    },
+    d: {
+        pressed: false,
+    },
 }
 
 
-
-var circleArray = [];
-function init() {
-    
-    circleArray = [];
-    for (var i = 0; i < 100; i++) {
-        
-        var radius = 30;
-        var x = Math.random() * (window.innerWidth - radius * 2) + radius;
-        var y = Math.random() * (window.innerHeight - radius * 2) + radius;
-        var dx = (Math.random() - 0.5) * 1;
-        var dy = (Math.random() - 0.5) * 1;
-
-        circleArray.push(new Circle(x, y, dx, dy));
-    }
+const overlay = {
+    opacity: 0
 }
 
 function animate() {
-    requestAnimationFrame(animate);
-    c.clearRect(0, 0, innerWidth, innerHeight);
+    window.requestAnimationFrame(animate)
     
-    for (var i = 0; i < circleArray.length; i++) {
-        circleArray[i].update();
-    }
+    background.draw()
+    
+    collisionBlocks.forEach(collisionBlock => {
+        collisionBlock.draw()
+    })
 
+    doors.forEach((door) => {
+        door.draw()
+    })
+
+
+    
+    player.handleInput(keys)
+    player.draw()
+    player.update()
+
+    c.save()
+    c.globalAlpha = overlay.opacity
+    c.fillStyle = 'black'
+    c.fillRect(0, 0, canvas.width, canvas.height)
+    c.restore()
 }
 
+levels[level].init()
+animate()
 
-animate();
-init();
+
+
+
+
+
