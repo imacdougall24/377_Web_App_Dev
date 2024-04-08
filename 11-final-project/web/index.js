@@ -9,38 +9,38 @@ let collisionBlocks
 let background
 let doors
 const player = new Player({
-    imageSrc: '../img/enemy-idea/enemy.svg',
+    imageSrc: '../img/enemy-idea/player.svg',
     frameRate: 1,
     animations: {
         idleRight: {
-            frameRate: 7,
+            frameRate: 9,
             frameBuffer: 5,
             loop: true,
-            imageSrc: '../img/enemy-idea/enemy.svg',
+            imageSrc: '../img/enemy-idea/player.svg',
         },
         idleLeft: {
-            frameRate: 7,
+            frameRate: 9,
             frameBuffer: 5,
             loop: true,
-            imageSrc: '../img/enemy-idea/enemy.svg',
+            imageSrc: '../img/enemy-idea/player.svg',
         },
         runRight: {
-            frameRate: 7,
+            frameRate: 9,
             frameBuffer: 4,
             loop: true,
-            imageSrc: '../img/enemy-idea/enemy.svg',
+            imageSrc: '../img/enemy-idea/player.svg',
         },
         runLeft: {
-            frameRate: 7,
+            frameRate: 9,
             frameBuffer: 4,
             loop: true,
-            imageSrc: '../img/enemy-idea/enemy.svg',
+            imageSrc: '../img/enemy-idea/player.svg',
         },
         enterDoor: {
-            frameRate: 7,
+            frameRate: 9,
             frameBuffer: 4,
             loop: false,
-            imageSrc: '../img/enemy-idea/enemy.svg',
+            imageSrc: '../img/enemy-idea/player.svg',
             onComplete: () => {
                 console.log('completed animation')
                 gsap.to(overlay, {

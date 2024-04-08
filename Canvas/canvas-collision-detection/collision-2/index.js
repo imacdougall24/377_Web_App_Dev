@@ -78,6 +78,7 @@ function Particle(x, y, radius, color) {
         this.x += this.velocity.x
         this.y += this.velocity.y
 
+
         // Check Collision w sides
         if(this.x - this.radius <= 0 || this.x + this.radius >= innerWidth) {
             this.velocity.x *= -1
@@ -85,6 +86,14 @@ function Particle(x, y, radius, color) {
         if(this.y - this.radius <= 0 || this.y + this.radius >= innerHeight) {
             this.velocity.y *= -1
         }
+
+        // Last resort push to screen
+        if (this.x - this.radius <= 0) this.x = this.radius
+        if (this.x + this.radius >= innerWidth) this.x = innerWidth - this.radius
+        if (this.y - this.radius <= 0) this.y = this.radius
+        if (this.y + this.radius >= innerHeight) this.y = innerHeight - this.radius
+
+        
 
         
 
